@@ -1,0 +1,74 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+function Food( { name, picture, rating } ){
+
+  return (
+    <div>
+    <h2>I like {name}</h2>
+    <h4>{rating}/5.0</h4>
+    <img src = {picture} alt={name}/>
+  </div>
+  );
+}
+
+const foodILike = [
+  {
+    id : 1,
+    name : 'scone',
+    image : 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MTBfMTY3%2FMDAxNjUyMTQ3MTkwMzg4.CVRbqEJUz3Lt9suRX7PJbCKeJOS_Y_fhTa_LCogGdY4g.GsJlU9QOqfGTaWWtAX8uIMn_cvinZI8Wu2oqWwH48Agg.JPEG.shcj0519%2F1652147149639.jpg&type=a340',
+    rating : 5,
+  },
+  {
+    id : 2,
+    name : 'croissant',
+    image : 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAxMTJfNTUg%2FMDAxNjczNDgyMzc4NDA0.WW1o7tHcvxiu-cc0YSrUL8EBd61Ic4_RbUPwnkiK26Eg.rK0y_OGddSZosU6OO49rbAZ3i2wLnVQ06te-qr0sL-4g.JPEG.saem55%2FIMG_8929.jpg&type=a340',
+    rating : 4,
+  },
+  {
+    id : 3,
+    name : 'cookie',
+    image : 'https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230125_52%2F1674649037890vtbEp_JPEG%2FB07G2ZMP3P.jpg&type=a340',
+    rating : 2,
+  },
+  {
+    id : 4,
+    name : 'brownie',
+    image : 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2Fa1%2F6e%2F60%2Fa16e60bd409b6c7d7a7966c941ca5ad0--chocolate-chip-brownies-chocolate-chips.jpg&type=a340',
+    rating : 2.5,
+  },
+  {
+    id : 5,
+    name : 'cinnamon roll',
+    image : 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F24%2F59%2Ff3%2F2459f36a811d236d054b86cbd5acb682.jpg&type=l340_165',
+    rating : 4.5,
+  },
+
+];
+
+function renderFood(food){
+    return <Food name={food.name} picture={food.image}/>; 
+}
+
+const renderFood2 = food => <Food name = {food.name} picture={food.image}/>;
+
+function App() {
+  console.log(foodILike.map(renderFood2));
+  return(
+    <div>
+      <h1>Hello!</h1>
+      {foodILike.map(food => (
+        <Food key={food.id} name={food.name} picture={food.image} rating={food.rating}/>
+      ))} 
+      {/*foodILike.map(renderFood)*/}
+    </div> 
+  );
+}
+
+Food.propTypes={
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number, 
+};
+
+export default App;
